@@ -33,7 +33,7 @@ namespace RunClubApp.Repository
 
         public async Task<Race> GetByIdAsync(int id)
         {
-            return await _context.Races.FirstOrDefaultAsync(q => q.Id == id);
+            return await _context.Races.Include(i => i.Address).FirstOrDefaultAsync(q => q.Id == id);
         }
 
         public async Task<IEnumerable<Race>> GetAllRacesByCity(string city)
